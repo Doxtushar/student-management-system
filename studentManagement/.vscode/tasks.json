@@ -1,0 +1,23 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Angular",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Test Angular",
+      "type": "shell",
+      "command": "npm",
+      "args": ["test"],
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
+

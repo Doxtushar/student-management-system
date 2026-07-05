@@ -1,0 +1,79 @@
+<header class="page-header">
+  <div>
+    <h1>Update Student</h1>
+    <p class="page-subtitle">Edit student information and save changes securely</p>
+  </div>
+  <a mat-stroked-button routerLink="/students">
+    <mat-icon>arrow_back</mat-icon>
+    Back
+  </a>
+</header>
+
+<mat-card class="glass-card form-card">
+  <mat-card-content>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <div *ngIf="message" class="state-message">
+      <mat-icon>error</mat-icon>
+      <span>{{ message }}</span>
+    </div>
+
+    <form [formGroup]="studentForm" (ngSubmit)="updateStudent()" *ngIf="!isLoading" class="student-form" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput type="number" formControlName="id" readonly />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Student Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="stNameControl.invalid">Enter 2-80 characters.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Course</mat-label>
+        <input matInput formControlName="course" />
+        <mat-error *ngIf="courseControl.invalid">Course is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="emailControl.invalid">Enter a valid email.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobileNumber" maxlength="10" />
+        <mat-error *ngIf="mobileNumberControl.invalid">Enter a 10 digit mobile number.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="dateOfBirth" placeholder="dd-mm-yyyy" inputmode="numeric" maxlength="10" />
+        <mat-error *ngIf="dateOfBirthControl.invalid">Enter date of birth as dd-mm-yyyy.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput rows="3" formControlName="address"></textarea>
+        <mat-error *ngIf="addressControl.invalid">Enter 5-150 characters.</mat-error>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+          <mat-icon>save</mat-icon>
+          {{ isSubmitting ? 'Updating...' : 'Update Student' }}
+        </button>
+        <a mat-button routerLink="/students">Cancel</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

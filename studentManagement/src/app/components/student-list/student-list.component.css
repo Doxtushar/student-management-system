@@ -1,0 +1,66 @@
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.table-toolbar mat-form-field {
+  flex: 1;
+  max-width: 420px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+.premium-table .mat-mdc-header-row {
+  background: linear-gradient(120deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));
+}
+
+.table-row {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.table-row:hover {
+  background: rgba(79, 70, 229, 0.04);
+}
+
+.id-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4338ca;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+mat-paginator {
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .table-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .table-toolbar mat-form-field {
+    max-width: none;
+  }
+}

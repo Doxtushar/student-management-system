@@ -1,0 +1,56 @@
+<header class="page-header">
+  <div>
+    <h1>Student Details</h1>
+    <p class="page-subtitle">Complete profile overview for the selected student</p>
+  </div>
+  <a mat-stroked-button routerLink="/students">
+    <mat-icon>arrow_back</mat-icon>
+    Back
+  </a>
+</header>
+
+<mat-card class="glass-card details-card">
+  <mat-card-content>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <div *ngIf="errorMessage" class="state-message">
+      <mat-icon>error</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <section *ngIf="student && !isLoading" class="details-grid">
+      <div class="detail-tile">
+        <span>ID</span>
+        <strong>#{{ student.id }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Student Name</span>
+        <strong>{{ displayName }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Course</span>
+        <strong>{{ student.course || '-' }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Gender</span>
+        <strong>{{ student.gender || '-' }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Email</span>
+        <strong>{{ student.email || '-' }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Mobile Number</span>
+        <strong>{{ student.mobileNumber || '-' }}</strong>
+      </div>
+      <div class="detail-tile">
+        <span>Date of Birth</span>
+        <strong>{{ student.dateOfBirth || '-' }}</strong>
+      </div>
+      <div class="detail-tile full-width">
+        <span>Address</span>
+        <strong>{{ student.address }}</strong>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,63 @@
+<mat-toolbar class="app-toolbar glass-toolbar" *ngIf="showAppShell$ | async">
+  <a class="brand" routerLink="/dashboard">
+    <span class="brand-icon">
+      <mat-icon>school</mat-icon>
+    </span>
+    <span class="brand-copy">
+      <strong>Student Course Management</strong>
+      <small>Enterprise Dashboard</small>
+    </span>
+  </a>
+
+  <span class="toolbar-spacer"></span>
+
+  <ng-container *ngIf="isLoggedIn$ | async">
+    <nav class="toolbar-links">
+      <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </a>
+      <a mat-button routerLink="/students" routerLinkActive="active-link">
+        <mat-icon>groups</mat-icon>
+        Students
+      </a>
+    </nav>
+    <button mat-stroked-button class="logout-button" type="button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-sidenav-container [class.app-shell]="showAppShell$ | async" [class.auth-shell]="!(showAppShell$ | async)">
+  <mat-sidenav
+    mode="side"
+    opened
+    class="app-sidenav glass-panel"
+    *ngIf="(showAppShell$ | async) && (isLoggedIn$ | async)"
+  >
+    <div class="sidenav-heading">
+      <span>Navigation</span>
+      <small>Manage your workspace</small>
+    </div>
+
+    <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </a>
+    <a mat-button routerLink="/students" routerLinkActive="active-link">
+      <mat-icon>groups</mat-icon>
+      Students
+    </a>
+    <a mat-button routerLink="/students/add" routerLinkActive="active-link">
+      <mat-icon>person_add</mat-icon>
+      Add Student
+    </a>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main class="app-main" [class.auth-main]="!(showAppShell$ | async)">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

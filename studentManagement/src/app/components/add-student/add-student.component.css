@@ -1,0 +1,20 @@
+.form-card {
+  max-width: 920px;
+}
+
+.student-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.full-width,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 720px) {
+  .student-form {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,49 @@
+<header class="page-header">
+  <div>
+    <h1>Dashboard</h1>
+    <p class="page-subtitle">Overview of students, courses, and enrollment insights</p>
+  </div>
+  <button mat-stroked-button color="primary" type="button" (click)="loadDashboard()">
+    <mat-icon>refresh</mat-icon>
+    Refresh
+  </button>
+</header>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+<div *ngIf="errorMessage" class="state-message">
+  <mat-icon>error</mat-icon>
+  <span>{{ errorMessage }}</span>
+</div>
+
+<section class="dashboard-grid" *ngIf="!isLoading && !errorMessage">
+  <mat-card *ngFor="let card of cards" class="stat-card glass-card" [ngClass]="card.color">
+    <mat-card-content>
+      <div class="stat-icon">
+        <mat-icon>{{ card.icon }}</mat-icon>
+      </div>
+      <div class="stat-copy">
+        <p>{{ card.label }}</p>
+        <strong>{{ card.value }}</strong>
+      </div>
+      <div class="stat-glow"></div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section class="dashboard-panel glass-card" *ngIf="!isLoading && !errorMessage">
+  <div class="panel-copy">
+    <h2>Quick Actions</h2>
+    <p>Jump into common student management workflows.</p>
+  </div>
+  <div class="panel-actions">
+    <a mat-raised-button color="primary" routerLink="/students">
+      <mat-icon>groups</mat-icon>
+      View Students
+    </a>
+    <a mat-stroked-button routerLink="/students/add">
+      <mat-icon>person_add</mat-icon>
+      Add Student
+    </a>
+  </div>
+</section>
