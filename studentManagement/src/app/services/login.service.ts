@@ -11,7 +11,7 @@ type LoginApiResponse = LoginResponse | string | boolean | null;
   providedIn: 'root'
 })
 export class LoginService {
-  private readonly loginUrl = `${environment.apiBaseUrl}${environment.authEndpoint}`;
+  private readonly loginUrl = `https://student-management-backend-production-e84e.up.railway.app/login`;
   private readonly loggedInSubject = new BehaviorSubject<boolean>(localStorage.getItem('isLoggedIn') === 'true');
 
   readonly isLoggedIn$ = this.loggedInSubject.asObservable();
