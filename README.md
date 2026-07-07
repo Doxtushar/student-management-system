@@ -93,14 +93,39 @@ Database
 
 ## Screenshots
 
-Add screenshots of:
+### Login Page
 
-- Login Page
-- Dashboard
-- Student List
-- Add Student
-- Update Student
-- Swagger API
+![Login](images/login.png)
+
+---
+
+### Dashboard
+
+![Dashboard](images/dashboard.png)
+
+---
+
+### Student List
+
+![Student List](images/student-list.png)
+
+---
+
+### Add Student
+
+![Add Student](images/add-student.png)
+
+---
+
+### Update Student
+
+![Update Student](images/update-student.png)
+
+---
+
+### Swagger API
+
+![Swagger](images/swagger.png)
 
 ---
 
